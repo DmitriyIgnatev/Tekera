@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>3D Model Viewer</title>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/build/three.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    {% load static%}
+    {% csrf_token %}
+    <script>
+       // Импортируйте библиотеку Three.js
+       import * as THREE from 'three';
+
+       // Создайте сцену
+       document.getElementById("status").textContent = "1";
+       const scene = new THREE.Scene();
+
+       // Создайте камеру
+       const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+       camera.position.z = 5;
+
+       // Создайте рендерер
+       const renderer = new THREE.WebGLRenderer();
+       renderer.setSize(window.innerWidth, window.innerHeight);
+       document.body.appendChild(renderer.domElement);
+
+       // Загрузите модель в формате OBJ
+       const loader = new THREE.OBJLoader();
+       loader.load("{% static "img/evil_pinocchio.odj" %}", function(obj) {
+           // Добавьте модель на сцену
+           scene.add(obj);
+       });
+
+       // Отрисуйте сцену
+       function animate() {
+           requestAnimationFrame(animate);
+           renderer.render(scene, camera);
+       }
+       animate();
+    </script>
+    <img src="{% static "img/redamogus.png" %}" alt="Если вы это читаете, то видимо что-то пошло не так" width="300" height="230">
+</body>
+</html>
