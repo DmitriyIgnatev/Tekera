@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+
 <div class='container bg-light p-5 rounded mt-3'>
     {% csrf_token %}
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button class="btn btn-lg btn-success" href="/" role="button">Войти</button>
+        <button class="btn btn-lg btn-success" href="/" role="button">Зарегестрироваться</button>
     </form>
 </div>
 {% endblock %}

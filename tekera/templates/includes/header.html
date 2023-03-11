@@ -5,10 +5,14 @@
       <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
         <img src="{% static "img/logo.png"%}" alt="логотип" height="70px" width="auto">
       </a>
+    {% if user.is_authenticated %}
+        <a href="/logout" class="login">Вход, как: {{ user.username }}</a>
+    {% else %}
       <ul class="nav nav-pills">
         <form action='/login'>
           <button class="login-btn">Войти</button>
         </form>
       </ul>
+    {% endif %}
     </header>
 </div>
