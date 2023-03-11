@@ -2,4 +2,8 @@ from django.shortcuts import render
 
 
 def home(request):
-    return render(request, 'base.html')
+    return render(request, 'mainscreen.html')
+
+
+def login(request):
+    return render(request, 'login.html')
