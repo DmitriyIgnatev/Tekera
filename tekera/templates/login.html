@@ -6,7 +6,8 @@
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <button class="btn btn-lg btn-success" href="/" role="button">Войти</button>
+        <button class="btn btn-lg btn-success" role="button">Войти</button>
+        <a class="btn btn-lg btn-success" href="/register">Зарегестрироваться</a>
     </form>
 </div>
 {% endblock %}
