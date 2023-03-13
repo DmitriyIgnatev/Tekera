@@ -4,6 +4,7 @@ from django.contrib.auth import login, logout
 from django.urls import reverse_lazy
 
 from .forms import LoginForm, SignUpForm
+from .models import MyModel
 
 
 def home(request):
@@ -36,4 +37,17 @@ def logout_view(request):
 
 
 def main(request):
-    return render(request, 'main.html')
+    models = MyModel.objects.all()
+    context = {
+        'houses': models
+    }
+
+    return render(request, 'main.html', context)
+
+
+def detail(request, pk):
+    models = MyModel.objects.get(pk=pk)
+    context = {
+        'house': models
+    }
+    return render(request, 'detail.html', context)
