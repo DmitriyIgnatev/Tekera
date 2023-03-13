@@ -29,7 +29,9 @@ INSTALLED_APPS = [
     'housemodels',
     'users',
     'tinymce',
-    'multiselectfield', 
+    'multiselectfield',
+    'sorl.thumbnail',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
