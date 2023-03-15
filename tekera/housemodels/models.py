@@ -14,9 +14,13 @@ class MyModel(models.Model):
         verbose_name='Описание',
         blank=False,
         null=False)
-    files = models.FileField(
+    gltf = models.FileField(
         upload_to='models',
-        verbose_name='модель здания',
+        verbose_name='gltf-файл',
+        blank=False,
+        null=False)
+    binn = models.ManyToManyField(
+        'Bin',
         blank=False,
         null=False)
     textures = models.ManyToManyField(
@@ -49,5 +53,13 @@ class Textures(models.Model):
     textures = models.FileField(
         upload_to='models/textures',
         verbose_name='Текстуры для модели',
+        blank=False,
+        null=False)
+
+
+class Bin(models.Model):
+    binn = models.FileField(
+        upload_to='models',
+        verbose_name='bin-файлы',
         blank=False,
         null=False)
