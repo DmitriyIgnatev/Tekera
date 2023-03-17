@@ -27,6 +27,9 @@ class MyModel(models.Model):
         'Textures',
         blank=False,
         null=False)
+    img = models.ImageField(
+        'Фото карточки, размер 250*200 px'
+    )
 
     @property
     def get_md(self):
