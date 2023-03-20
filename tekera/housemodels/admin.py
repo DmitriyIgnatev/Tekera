@@ -9,4 +9,8 @@ class ItemAdmin(admin.ModelAdmin):
 
 admin.site.register(Bin)
 admin.site.register(Textures)
-admin.site.register(Application)
+
+
+@admin.register(Application)
+class ApplicationAdmin(admin.ModelAdmin):
+    list_display = ('name', 'phone', 'house')

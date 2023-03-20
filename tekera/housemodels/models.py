@@ -7,6 +7,7 @@ from django_cleanup.signals import cleanup_pre_delete
 
 class MyModel(models.Model):
     name = models.CharField(
+        verbose_name='Название',
         max_length=255,
         blank=False,
         null=False)
@@ -51,6 +52,13 @@ class MyModel(models.Model):
 
     cleanup_pre_delete.connect(sorl_delete)
 
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Карточки многоэтажных зданий'
+        verbose_name_plural = 'Карточки многоэтажных зданий'
+
 
 class Textures(models.Model):
     textures = models.FileField(
@@ -59,6 +67,13 @@ class Textures(models.Model):
         blank=False,
         null=False)
 
+    def __str__(self):
+        return self.textures.url
+
+    class Meta:
+        verbose_name = 'Текстуры'
+        verbose_name_plural = 'Текстуры'
+
 
 class Bin(models.Model):
     binn = models.FileField(
@@ -66,6 +81,13 @@ class Bin(models.Model):
         verbose_name='bin-файлы',
         blank=False,
         null=False)
+
+    def __str__(self):
+        return self.binn.url
+
+    class Meta:
+        verbose_name = 'bin-файлы'
+        verbose_name_plural = 'bin-файлы'
 
 
 class Application(models.Model):
@@ -84,3 +106,10 @@ class Application(models.Model):
     )
 
     house = models.ForeignKey(MyModel, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'Заявки'
+        verbose_name_plural = 'Заявки'
