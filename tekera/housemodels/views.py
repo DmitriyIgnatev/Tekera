@@ -3,8 +3,9 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth import login, logout
 from django.urls import reverse_lazy
 
-from .forms import LoginForm, SignUpForm
-from .models import MyModel
+from .forms import LoginForm, SignUpForm, Application_form
+from .models import MyModel, Application
+from django.contrib import messages
 
 
 def home(request):
@@ -47,7 +48,17 @@ def main(request):
 
 def detail(request, pk):
     models = MyModel.objects.get(pk=pk)
+    form = Application_form(request.POST or None)
+    if request.method == 'POST' and form.is_valid():
+        house_m = Application.objects.create(
+            name=form.cleaned_data.get("name"),
+            phone=form.cleaned_data.get("phone"),
+            house=models
+        )
+        house_m.save()
+        messages.success(request, "Ваше сообщение успешно отправлено")
     context = {
-        'house': models
+        'house': models,
+        'form': form
     }
     return render(request, 'detail.html', context)

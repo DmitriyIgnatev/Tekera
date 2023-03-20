@@ -66,3 +66,21 @@ class Bin(models.Model):
         verbose_name='bin-файлы',
         blank=False,
         null=False)
+
+
+class Application(models.Model):
+    name = models.CharField(
+        'Имя',
+        max_length=255,
+        blank=False,
+        null=False
+    )
+
+    phone = models.CharField(
+        'Номер телефона для связи',
+        max_length=255,
+        blank=False,
+        null=False
+    )
+
+    house = models.ForeignKey(MyModel, on_delete=models.CASCADE)

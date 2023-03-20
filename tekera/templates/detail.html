@@ -12,5 +12,29 @@
 			{{ house.descriptions|safe}}
 		</div>
 	</div>
+	<form method="POST">
+		<div class="app">
+			<h3 style="justify-content: center;">Оставьте заявку, если вам понравился дом</h3>
+			{{ form.name.label }}
+			{{ form.name }}
+			<br>
+			{{ form.phone.label }}
+			{{ form.phone }}
+			<br>
+		</div>
+		
+			{% csrf_token %}
+			<button class="btn btn-lg btn-success" role="button">Оставить заявку</button>
+		
+		{% if messages %}
+		<ul class="messages">
+			{% for message in messages %}
+			<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+	</form>
 </div>
+
+
 {% endblock %}
