@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import (AuthenticationForm, UserCreationForm)
-from .models import Application
+from .models import Application, Feedback
 from django.forms import ModelForm
 
 
@@ -29,6 +29,20 @@ class Application_form(ModelForm):
     class Meta:
         model = Application
         fields = ('name', 'phone')
+        labels = {
+            Application.name.field.name: 'Ваше имя'
+        }
+
+
+class Feedback_form(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.visible_fields():
+            field.field.widget.attrs['class'] = 'form-control'
+
+    class Meta:
+        model = Feedback
+        fields = ('name', 'email', 'question')
         labels = {
             Application.name.field.name: 'Ваше имя'
         }

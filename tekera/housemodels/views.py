@@ -3,8 +3,8 @@ from django.contrib.auth.views import LoginView
 from django.contrib.auth import login, logout
 from django.urls import reverse_lazy
 
-from .forms import LoginForm, SignUpForm, Application_form
-from .models import MyModel, Application
+from .forms import LoginForm, SignUpForm, Application_form, Feedback_form
+from .models import MyModel, Application, Feedback
 from django.contrib import messages
 
 
@@ -62,3 +62,19 @@ def detail(request, pk):
         'form': form
     }
     return render(request, 'detail.html', context)
+
+
+def about(request):
+    return render(request, 'about.html')
+
+
+def feedback(request):
+    form = Feedback_form(request.POST or None)
+    if request.method == 'POST' and form.is_valid():
+        feedback = Feedback.objects.create(**form.cleaned_data)
+        feedback.save()
+        messages.success(request, "Ваше сообщение успешно отправлено")
+    context = {
+        'form': form
+    }
+    return render(request, 'feedback.html', context)

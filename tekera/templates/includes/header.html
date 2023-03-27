@@ -2,7 +2,7 @@
 {% csrf_token %}
 <div class="container">
     <header class="d-flex justify-content-center py-3">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+      <a href="/main" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
         <img src="{% static "img/logo.png"%}" alt="логотип" height="70px" width="auto">
       </a>
     {% if user.is_authenticated %}

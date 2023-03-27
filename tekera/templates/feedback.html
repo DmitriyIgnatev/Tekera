@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class='container bg-light p-5 rounded mt-3'>
+    <h3>Отправьте нам ваш вопрос или предложение по улучшению качества услуг</h3>
+    {% csrf_token %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-lg btn-success" role="button">Отправить</button>
+    </form>
+    {% if messages %}
+		<ul class="messages">
+			{% for message in messages %}
+			<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+</div>
+{% endblock %}

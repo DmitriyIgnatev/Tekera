@@ -113,3 +113,30 @@ class Application(models.Model):
     class Meta:
         verbose_name = 'Заявки'
         verbose_name_plural = 'Заявки'
+
+
+class Feedback(models.Model):
+    name = models.CharField(
+        'Имя',
+        max_length=255,
+        blank=False,
+        null=False
+    )
+    email = models.EmailField(
+        'Ваша почта',
+        blank=False,
+        null=False
+    )
+
+    question = models.TextField(
+        'Ваш вопрос',
+        blank=False,
+        null=False
+    )
+
+    class Meta:
+        verbose_name = 'Вопросы'
+        verbose_name_plural = 'Вопросы'
+
+    def __str__(self):
+        return self.name
