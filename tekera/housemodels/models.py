@@ -32,6 +32,11 @@ class MyModel(models.Model):
         'Фото карточки, размер 250*200 px'
     )
 
+    layout = models.ForeignKey(
+        'Layout',
+        verbose_name='Планировка здания',
+        on_delete=models.CASCADE)
+
     @property
     def get_md(self):
         return get_thumbnail(
@@ -140,3 +145,11 @@ class Feedback(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Layout(models.Model):
+    img = models.ImageField(
+        'Планировка здания',
+        upload_to='models/layout',
+        blank=False,
+        null=False)

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import MyModel, Textures, Bin, Application, Feedback
+from .models import MyModel, Textures, Bin, Application, Feedback, Layout
 
 
 @admin.register(MyModel)
@@ -19,3 +19,6 @@ class ApplicationAdmin(admin.ModelAdmin):
 @admin.register(Feedback)
 class FeedbackAdmin(admin.ModelAdmin):
     list_display = ('name', 'question')
+
+
+admin.site.register(Layout)

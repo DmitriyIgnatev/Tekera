@@ -12,8 +12,11 @@
 			{{ house.descriptions|safe}}
 		</div>
 	</div>
+	<h3 style="justify-content: center;">Планировка здания</h3>
+	<img src="{{ house.layout.img.url }}" class="img-fluid" alt="Планировка здания">
+
 	<form method="POST">
-		<div class="app">
+		<div class="app">	
 			<h3 style="justify-content: center;">Оставьте заявку, если вам понравился дом</h3>
 			{{ form.name.label }}
 			{{ form.name }}
