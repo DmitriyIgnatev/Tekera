@@ -29,7 +29,7 @@ class MyModel(models.Model):
         blank=False,
         null=False)
     img = models.ImageField(
-        'Фото карточки, размер 250*200 px'
+        'Фото карточки, размер 200 * 125 px'
     )
 
     layout = models.ForeignKey(
